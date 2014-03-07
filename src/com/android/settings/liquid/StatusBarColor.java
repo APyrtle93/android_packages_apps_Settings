@@ -32,7 +32,7 @@ import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 
 import com.android.settings.R;
-import com.android.settings.ose.util.Helpers;
+import com.android.settings.liquid.util.Helpers;
 import com.android.settings.SettingsPreferenceFragment;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
