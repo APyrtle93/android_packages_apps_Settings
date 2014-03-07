@@ -633,13 +633,6 @@ public class Settings extends PreferenceActivity
                 if (um.hasUserRestriction(UserManager.DISALLOW_MODIFY_ACCOUNTS)) {
                     target.remove(i);
                 }
-            }
-
-            if (i < target.size() && target.get(i) == header
-                    && UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
-                    && !ArrayUtils.contains(SETTINGS_FOR_RESTRICTED, id)) {
-                target.remove(i);
-            }
             } else if (id == R.id.kernel_tweaker) {
                 // Embedding into Settings only if app exists (user could manually remove it)
                 boolean supported = false;
@@ -650,7 +643,11 @@ public class Settings extends PreferenceActivity
                 if (!supported) {
                     target.remove(i);
                 }
-
+            if (i < target.size() && target.get(i) == header
+                    && UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
+                    && !ArrayUtils.contains(SETTINGS_FOR_RESTRICTED, id)) {
+                target.remove(i);
+            	}
             // Increment if the current one wasn't removed by the Utils code.
             if (i < target.size() && target.get(i) == header) {
                 // Hold on to the first header, when we need to reset to the top-level
@@ -663,7 +660,7 @@ public class Settings extends PreferenceActivity
             }
         }
     }
-
+  }
     private int insertAccountsHeaders(List<Header> target, int headerIndex) {
         String[] accountTypes = mAuthenticatorHelper.getEnabledAccountTypes();
         List<Header> accountHeaders = new ArrayList<Header>(accountTypes.length);
