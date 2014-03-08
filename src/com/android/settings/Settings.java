@@ -643,6 +643,7 @@ public class Settings extends PreferenceActivity
                 if (!supported) {
                     target.remove(i);
                 }
+            }
             if (i < target.size() && target.get(i) == header
                     && UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
                     && !ArrayUtils.contains(SETTINGS_FOR_RESTRICTED, id)) {
@@ -660,7 +661,6 @@ public class Settings extends PreferenceActivity
             }
         }
     }
-  }
     private int insertAccountsHeaders(List<Header> target, int headerIndex) {
         String[] accountTypes = mAuthenticatorHelper.getEnabledAccountTypes();
         List<Header> accountHeaders = new ArrayList<Header>(accountTypes.length);
